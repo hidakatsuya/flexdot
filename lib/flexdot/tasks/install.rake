@@ -1,0 +1,3 @@
+namespace :install do
+
+end
