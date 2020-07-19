@@ -1,12 +1,17 @@
 # frozen_string_literal: true
 
+require 'yaml'
+
+require_relative 'logger'
+require_relative 'backup'
+require_relative 'index'
 
 module Flexdot
   class Installer
-    def initialize(name, target_dir: nil)
+    def initialize(name, base_dir:, target_dir:)
       @name = name
-      @base_dir = Pathname.pwd
-      @target_dir = target_dir || base_dir.join('..')
+      @base_dir = base_dir
+      @target_dir = target_dir
       @backup = Backup.new
       @logger = Logger.new(@target_dir)
     end
@@ -39,6 +44,8 @@ module Flexdot
           if target_file.exist?
             backup.call(target_file)
             status.backuped = true
+          elsif !target_file.dirname.exist?
+            target_file.dirname.mkpath
           end
 
           target_file.make_symlink(dotfile.to_path)

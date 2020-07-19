@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'pathname'
+require 'fileutils'
+
 module Flexdot
   class Backup
     BASE_DIR = 'backup'

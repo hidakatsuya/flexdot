@@ -1,6 +1,10 @@
-require "flexdot/version"
+# frozen_string_literal: true
+
+require_relative 'flexdot/version'
+require_relative 'flexdot/tasks'
 
 module Flexdot
-  class Error < StandardError; end
-  # Your code goes here...
+  def self.install_tasks(base_dir:, target_dir:)
+    Tasks.new(base_dir, target_dir).install
+  end
 end
