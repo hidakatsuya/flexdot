@@ -1,0 +1,9 @@
+group_x:
+  aaa:
+    .arc: .
+  bbb:
+    b.conf: .
+
+group_y:
+  ccc:
+    c.json: config/ccc
