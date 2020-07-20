@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['hidakatsuya@gmail.com']
 
   spec.summary       = 'A Flexible and Rake based dotfile manager'
-  spec.description   = 'A Flexible and Rake based dotfile manager'
+  spec.description   = 'Flexdot is a Flexible and Rake based dotfile manager'
   spec.homepage      = 'https://github.com/hidakatsuya/flexdot'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
