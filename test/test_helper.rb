@@ -18,6 +18,13 @@ module TestHelper
     home / 'dotfiles'
   end
 
+  def assert_link(home_file, to_dotfile:)
+    assert_equal(
+      dotfiles.join(to_dotfile),
+      home.join(home_file).readlink
+    )
+  end
+
   def reset_test_dir
     reset_home
     reset_dotfiles
@@ -34,7 +41,10 @@ module TestHelper
       end
     end
 
+    # Create a file with the same path as the link destination
     home.join('b.conf').write('')
+    # Create an invalid link with the same path as the link destination
+    home.join('c.yml').make_symlink(dotfiles.join('bbb/b.conf'))
   end
 
   def reset_dotfiles
