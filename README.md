@@ -1,5 +1,7 @@
 # Flexdot
 
+[![Test](https://github.com/hidakatsuya/flexdot/workflows/Test/badge.svg?branch=master)](https://github.com/hidakatsuya/flexdot/actions?query=workflow%3ATest)
+
 A Flexible and Rake based dotfile manager.
 
 ## License
