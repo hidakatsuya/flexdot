@@ -36,9 +36,9 @@ class FlexdotTest < Minitest::Test
 
   def assert_backup
     backup_dir = dotfiles / 'backup'
-    backup = backup_dir.glob('*/').first
+    backup = backup_dir.children.first
 
-    assert_equal 1, backup_dir.glob('*/').size
+    assert_equal 1, backup_dir.children.size
     assert_equal ['b.conf'], backup.children.map { |c| c.basename.to_s }
   end
 
