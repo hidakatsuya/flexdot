@@ -3,7 +3,9 @@ group_x:
     .arc: .
   bbb:
     b.conf: .
+  ccc:
+    c.yml: .
 
 group_y:
-  ccc:
-    c.json: config/ccc
+  ddd:
+    d.json: config/ddd
