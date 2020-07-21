@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Flexdot
-  class Logger
+  class Console
     Status = Struct.new(:target_file, :result, :backuped)
 
     def initialize(target_dir)

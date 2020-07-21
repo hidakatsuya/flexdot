@@ -2,7 +2,7 @@
 
 require 'yaml'
 
-require_relative 'logger'
+require_relative 'console'
 require_relative 'backup'
 require_relative 'index'
 
@@ -13,7 +13,7 @@ module Flexdot
       @base_dir = base_dir
       @target_dir = target_dir
       @backup = Backup.new
-      @logger = Logger.new(@target_dir)
+      @console = Console.new(@target_dir)
     end
 
     def install(index_file)
@@ -25,13 +25,13 @@ module Flexdot
 
     private
 
-    attr_reader :name, :base_dir, :target_dir, :backup, :logger
+    attr_reader :name, :base_dir, :target_dir, :backup, :console
 
     def install_link(dotfile_path, target_path)
       dotfile = @base_dir.join(dotfile_path).expand_path
       target_file = @target_dir.join(target_path, dotfile.basename).expand_path
 
-      logger.log(target_file) do |status|
+      console.log(target_file) do |status|
         if target_file.symlink?
           if target_file.readlink == dotfile
             status.result = :already_linked
