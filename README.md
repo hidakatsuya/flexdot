@@ -12,31 +12,18 @@ Ruby 2.5+
 
 ### Installing
 
-Create the following directory structure:
+Install it as:
+
+    $ gem install flexdot
+
+Then, create the following directory structure:
 
 ```
 $HOME/
   dotfiles/
 ```
 
-Create Gemfile to install Flexdot:
-
-    $ cd $HOME/dotfiles
-    $ bundle init
-
-Put the followings to `Gemfile`:
-
-```ruby
-source "https://rubygems.pkg.github.com/hidakatsuya" do
-  gem "flexdot", "<latest version>"
-end
-```
-
-Then, run `bundle install`.
-
-You can check the latest version on [the flexdot packages](https://github.com/hidakatsuya/flexdot/packages/321519/versions).
-
-Next, create a `$HOME/dotfiles/Rakefile` with the following codes:
+Create a `$HOME/dotfiles/Rakefile` with the following codes:
 
 ```ruby
 require 'flexdot'
@@ -49,7 +36,7 @@ Flexdot.install_tasks(
 
 Finally, run `rake -T` in the `$HOME/dotfiles` and make sure that the output is as follows:
 
-    $ bundle exec rake -T
+    $ rake -T
     rake clear_backups
 
 ## Example
@@ -111,7 +98,7 @@ $HOME/dotfiles
 
 When you run the `rake -T` command in that directory structure, you should have two installation commands available:
 
-    $ bundle exec rake -T
+    $ rake -T
     rake clear_backups   # Clear all backups
     rake install:macOS   # Install dotfiles for macOS
     rake install:ubuntu  # Install dotfiles for ubuntu
@@ -190,7 +177,7 @@ ubuntu:
 
 ### Installing dotfiles
 
-    $ bundle exec rake install:macOS
+    $ rake install:macOS
 
 The following is the output result:
 
@@ -215,7 +202,7 @@ Also, `(backup)` means that a file exists in the link path and that file was bac
 
 You can clear all backups in `$HOME/dotfiles/backup/YYYYMMDDHHIISS` to run `rake clear_backups`.
 
-    $ bundle exec rake clear_backups
+    $ rake clear_backups
 
 ## License
 
