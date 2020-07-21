@@ -13,18 +13,30 @@ Ruby 2.5+
 
 ### Installing
 
-Install it as:
-
-    $ gem install flexdot
-
-Then, create the following directory structure:
+Create the following directory structure:
 
 ```
 $HOME/
-└── dotfiles/
+├── dotfiles/
+:
 ```
 
-Create a `$HOME/dotfiles/Rakefile` with the following codes:
+Create a `Gemfile` to install Flexdot:
+
+    $ cd $HOME/dotfiles
+    $ bundle init
+
+Add this line to the `Gemfile`:
+
+```ruby
+gem 'flexdot'
+```
+
+Or install it yourself as:
+
+    $ gem install flexdot
+
+Then, create a `$HOME/dotfiles/Rakefile` with the following codes:
 
 ```ruby
 require 'flexdot'
