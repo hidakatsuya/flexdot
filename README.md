@@ -21,7 +21,7 @@ Then, create the following directory structure:
 
 ```
 $HOME/
-  dotfiles/
+└── dotfiles/
 ```
 
 Create a `$HOME/dotfiles/Rakefile` with the following codes:
