@@ -1,5 +1,6 @@
 # Flexdot
 
+[![Gem Version](https://badge.fury.io/rb/flexdot.svg)](https://badge.fury.io/rb/flexdot)
 [![Test](https://github.com/hidakatsuya/flexdot/workflows/Test/badge.svg?branch=master)](https://github.com/hidakatsuya/flexdot/actions?query=workflow%3ATest)
 
 A Flexible and Rake based dotfile manager.
