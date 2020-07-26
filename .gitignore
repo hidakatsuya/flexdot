@@ -9,4 +9,5 @@
 /Gemfile.lock
 
 /test/home/*
-!/test/home/dotfiles/*
+/test/home/dotfiles/backup/
+!/test/home/dotfiles/
