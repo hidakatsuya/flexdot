@@ -17,9 +17,13 @@ module Flexdot
     end
 
     def install(index_file)
-      index = Index.new(YAML.load_file(index_file.to_path))
+      index = Index.new(YAML.load_file(index_file.to_path), base_dir)
+
       index.each do |dotfile_path:, target_path:|
-        install_link(dotfile_path, target_path)
+        dotfile = dotfile_path.expand_path
+        target_file = target_dir.join(target_path, dotfile.basename).expand_path
+
+        install_link(dotfile, target_file)
       end
     end
 
@@ -27,10 +31,7 @@ module Flexdot
 
     attr_reader :name, :base_dir, :target_dir, :backup, :console
 
-    def install_link(dotfile_path, target_path)
-      dotfile = @base_dir.join(dotfile_path).expand_path
-      target_file = @target_dir.join(target_path, dotfile.basename).expand_path
-
+    def install_link(dotfile, target_file)
       console.log(target_file) do |status|
         if target_file.symlink?
           if target_file.readlink == dotfile

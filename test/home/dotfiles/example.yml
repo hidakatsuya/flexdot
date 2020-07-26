@@ -9,3 +9,5 @@ group_x:
 group_y:
   ddd:
     d.json: config/ddd
+  eee:
+    '*': .

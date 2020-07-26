@@ -17,6 +17,8 @@ class InstallTest < Minitest::Test
       [link_created] b.conf (backup)
       [link_updated] c.yml
       [link_created] config/ddd/d.json
+      [link_created] e2.json
+      [link_created] e1.json
     OUT
     assert_home_links
     assert_backup
@@ -28,6 +30,8 @@ class InstallTest < Minitest::Test
       [already_linked] b.conf
       [already_linked] c.yml
       [already_linked] config/ddd/d.json
+      [already_linked] e2.json
+      [already_linked] e1.json
     OUT
     assert_home_links
   end
