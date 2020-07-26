@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class FlexdotTest < Minitest::Test
+class InstallTest < Minitest::Test
   include TestHelper
 
   def setup
