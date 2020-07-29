@@ -11,3 +11,4 @@ group_y:
     d.json: config/ddd
   eee:
     '*': .
+    e3: is ignored dut to the inclusion of "*"

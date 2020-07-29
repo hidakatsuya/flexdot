@@ -43,8 +43,15 @@ module Flexdot
       end
 
       def call(&block)
-        children.each do |k, v|
-          node(k, v).call(&block)
+        all_files_node = detect_all_files_node
+
+        if all_files_node
+          all_files_node.call(&block)
+          warn '[warn] some links were ignored due to the inclusion of "*".' if children.size > 1
+        else
+          children.each do |k, v|
+            node(k, v).call(&block)
+          end
         end
       end
 
@@ -54,11 +61,15 @@ module Flexdot
         @value
       end
 
+      def detect_all_files_node
+        node_value = children.find { |k, v| AllFilesNode.match?(k, v) }
+        node_value ? AllFilesNode.new(*node_value, path) : nil
+      end
+
       def node(key, value)
         node_class = [
           DirectoryNode,
-          FileNode,
-          FilesNode
+          FileNode
         ].find { |klass| klass.match?(key, value) }
 
         raise ArgumentError, 'Invalid node' unless node_class
@@ -83,7 +94,7 @@ module Flexdot
       end
     end
 
-    class FilesNode < FileNode
+    class AllFilesNode < FileNode
       def self.match?(key, value)
         value.is_a?(String) && key == '*'
       end
