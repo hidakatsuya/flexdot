@@ -51,5 +51,7 @@ class InstallTest < Minitest::Test
     assert_link 'b.conf', to_dotfile: 'group_x/bbb/b.conf'
     assert_link 'c.yml', to_dotfile: 'group_x/ccc/c.yml'
     assert_link 'config/ddd/d.json', to_dotfile: 'group_y/ddd/d.json'
+    assert_link 'e1.json', to_dotfile: 'group_y/eee/e1.json'
+    assert_link 'e2.json', to_dotfile: 'group_y/eee/e2.json'
   end
 end
