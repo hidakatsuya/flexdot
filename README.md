@@ -41,7 +41,7 @@ Then, create a `$HOME/dotfiles/Rakefile` with the following codes:
 ```ruby
 require 'flexdot'
 
-Flexdot.install_tasks(
+Flexdot.setup(
   base_dir: '.',                # $HOME/dotfiles/
   target_dir: '/home/username'  # $HOME/
 )

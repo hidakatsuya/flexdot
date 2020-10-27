@@ -3,7 +3,7 @@
 require 'pathname'
 require_relative '../../../../lib/flexdot'
 
-Flexdot.install_tasks(
+Flexdot.setup(
   base_dir: Pathname.pwd,
   target_dir: Pathname.pwd.join('..')
 )
