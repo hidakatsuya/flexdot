@@ -8,5 +8,5 @@
 /tmp/
 /Gemfile.lock
 
-/test/home/*
-!/test/home/dotfiles/*
+/test/tasks/home/*
+!/test/tasks/home/dotfiles/*
