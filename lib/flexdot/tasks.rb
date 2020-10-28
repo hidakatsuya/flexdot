@@ -62,7 +62,7 @@ module Flexdot
 
     def indexes
       @indexes ||= Pathname.new(dotfiles_dir).glob('*.yml').map do |index_file|
-        Index.new(name: index_file.basename('.*'), filename: index_file)
+        Index.new(name: index_file.basename('.*').to_s, filename: index_file)
       end
     end
   end
