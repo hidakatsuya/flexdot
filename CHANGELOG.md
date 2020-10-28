@@ -23,7 +23,7 @@ Flexdot.setup(
 
 ### Enchancements
 
-- Add default_index option fixes #2
+- Add `default_index` option fixes #2
 - Option renaming and simplification by default value
 
 Please refer to README.md for details.
