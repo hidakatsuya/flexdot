@@ -49,15 +49,14 @@ module Flexdot
     attr_reader :dotfiles_dir, :home_dir
 
     def default_index
-      @default_index ||=
-        if @default_index_name
-          ifnone = -> { raise "#{@default_index_name} index is not found" }
-          indexes.find(ifnone) { |index| index.name == @default_index_name }
-        elsif indexes.size == 1
-          indexes.first
-        else
-          nil
-        end
+      if @default_index_name
+        ifnone = -> { raise "#{@default_index_name} index is not found" }
+        indexes.find(ifnone) { |index| index.name == @default_index_name }
+      elsif indexes.size == 1
+        indexes.first
+      else
+        nil
+      end
     end
 
     def indexes
