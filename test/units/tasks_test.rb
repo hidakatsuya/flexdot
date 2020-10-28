@@ -10,7 +10,7 @@ class TasksTest < Minitest::Test
     assert_nil tasks.send(:default_index)
 
     tasks = tasks_with_multiple_indexes(default_index: 'b')
-    assert_equal tasks.send(:default_index).name, 'b'
+    assert_equal 'b', tasks.send(:default_index).name
 
     tasks = tasks_with_multiple_indexes(default_index: 'unknown')
     assert_raises StandardError do
@@ -20,10 +20,10 @@ class TasksTest < Minitest::Test
 
   def test_default_index_with_single_index
     tasks = tasks_with_single_index(default_index: nil)
-    assert_equal tasks.send(:default_index).name, 'a'
+    assert_equal 'a', tasks.send(:default_index).name
 
     tasks = tasks_with_single_index(default_index: 'a')
-    assert_equal tasks.send(:default_index).name, 'a'
+    assert_equal 'a', tasks.send(:default_index).name
 
     tasks = tasks_with_single_index(default_index: 'unknown')
     assert_raises StandardError do
