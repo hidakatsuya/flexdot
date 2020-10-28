@@ -211,6 +211,10 @@ ubuntu:
 
 ### Installing dotfiles
 
+    $ rake install
+
+Or
+
     $ rake install:macOS
 
 The following is the output result:
