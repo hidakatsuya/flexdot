@@ -4,7 +4,7 @@ require_relative 'flexdot/version'
 require_relative 'flexdot/tasks'
 
 module Flexdot
-  def self.setup(target_dir:, base_dir: '.', default_index: nil)
-    Tasks.new(base_dir, target_dir, default_index).install
+  def self.setup(home_dir:, dotfiles_dir: '.', default_index: nil)
+    Tasks.new(dotfiles_dir, home_dir, default_index).install
   end
 end

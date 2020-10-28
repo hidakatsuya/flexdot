@@ -42,8 +42,17 @@ Then, create a `$HOME/dotfiles/Rakefile` with the following codes:
 require 'flexdot'
 
 Flexdot.setup(
-  base_dir: '.',                # $HOME/dotfiles/
-  target_dir: '/home/username'  # $HOME/
+  home_dir: '/home/username',
+
+  # (optional)
+  # The dotfile directory path. Default '.'.
+  dotfiles_dir: '.',
+
+  # (optional)
+  # The `rake install` command will be available to install the dotfile for the specified index file. Default nil.
+  #
+  # Note that the `rake install` command is always available if you have a single index file.
+  default_index: 'name_of_an_index_file'
 )
 ```
 
@@ -107,12 +116,24 @@ $HOME/dotfiles
 └── Rakefile
 ```
 
+### Rakefile
+
+```ruby
+require 'flexdot'
+
+Flexdot.setup(
+  home_dir: '..',
+  default_index: 'macOS'
+)
+```
+
 ### Available Commands
 
 When you run the `rake -T` command in that directory structure, you should have two installation commands available:
 
     $ rake -T
     rake clear_backups   # Clear all backups
+    rake install         # Install dotfiles for macOS
     rake install:macOS   # Install dotfiles for macOS
     rake install:ubuntu  # Install dotfiles for ubuntu
 

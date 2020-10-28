@@ -4,6 +4,6 @@ require 'pathname'
 require_relative '../../../../lib/flexdot'
 
 Flexdot.setup(
-  base_dir: Pathname.pwd,
-  target_dir: Pathname.pwd.join('..')
+  dotfiles_dir: '.',
+  home_dir: '..'
 )

@@ -21,7 +21,7 @@ module Flexdot
         dotfile_path = paths + [k]
         case v
         when String
-          block.call(dotfile_path: File.join(*dotfile_path), target_path: v)
+          block.call(dotfile_path: File.join(*dotfile_path), home_file_path: v)
         when Hash
           fetch_descendants(v, paths: dotfile_path, &block)
         else

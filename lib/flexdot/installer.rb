@@ -8,47 +8,47 @@ require_relative 'index'
 
 module Flexdot
   class Installer
-    def initialize(name, base_dir:, target_dir:)
+    def initialize(name, dotfiles_dir:, home_dir:)
       @name = name
-      @base_dir = base_dir
-      @target_dir = target_dir
+      @dotfiles_dir = dotfiles_dir
+      @home_dir = home_dir
       @backup = Backup.new
-      @console = Console.new(@target_dir)
+      @console = Console.new(@home_dir)
     end
 
     def install(index_file)
       index = Index.new(YAML.load_file(index_file.to_path))
-      index.each do |dotfile_path:, target_path:|
-        install_link(dotfile_path, target_path)
+      index.each do |dotfile_path:, home_file_path:|
+        install_link(dotfile_path, home_file_path)
       end
     end
 
     private
 
-    attr_reader :name, :base_dir, :target_dir, :backup, :console
+    attr_reader :name, :dotfiles_dir, :home_dir, :backup, :console
 
-    def install_link(dotfile_path, target_path)
-      dotfile = @base_dir.join(dotfile_path).expand_path
-      target_file = @target_dir.join(target_path, dotfile.basename).expand_path
+    def install_link(dotfile_path, home_file_path)
+      dotfile = @dotfiles_dir.join(dotfile_path).expand_path
+      home_file = @home_dir.join(home_file_path, dotfile.basename).expand_path
 
-      console.log(target_file) do |status|
-        if target_file.symlink?
-          if target_file.readlink == dotfile
+      console.log(home_file) do |status|
+        if home_file.symlink?
+          if home_file.readlink == dotfile
             status.result = :already_linked
           else
-            target_file.unlink
-            target_file.make_symlink(dotfile.to_path)
+            home_file.unlink
+            home_file.make_symlink(dotfile.to_path)
             status.result = :link_updated
           end
         else
-          if target_file.exist?
-            backup.call(target_file)
+          if home_file.exist?
+            backup.call(home_file)
             status.backuped = true
-          elsif !target_file.dirname.exist?
-            target_file.dirname.mkpath
+          elsif !home_file.dirname.exist?
+            home_file.dirname.mkpath
           end
 
-          target_file.make_symlink(dotfile.to_path)
+          home_file.make_symlink(dotfile.to_path)
           status.result = :link_created
         end
       end
