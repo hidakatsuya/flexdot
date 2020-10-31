@@ -20,7 +20,7 @@ Flexdot.setup(
 )
 ```
 
-Not that If the `dotfiles_dir` option is `'.'` (current directory) , you can omit it.
+Note that If the `dotfiles_dir` option is `'.'` (current directory) , you can omit it.
 
 Then, update flexdot to v2.0.0 and you're done.
 
