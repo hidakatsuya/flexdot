@@ -1,5 +1,14 @@
 ## 2.0.0
 
+### Breaking Changes
+
+- Change the syntax of configuration in the `Rakefile`
+
+### Enchancements
+
+- Add `default_index` option fixes #2
+- Option renaming and simplification by default value
+
 ### Migrating from v1.0.x
 
 First, you need to rewrite the `Rakefile` configuration to the v2.0.0 syntax.
@@ -25,14 +34,3 @@ Note that If the `dotfiles_dir` option is `'.'` (current directory) , you can om
 Then, update flexdot to v2.0.0 and you're done.
 
     $ bundle update flexdot
-
-### Breaking Changes
-
-- Change the syntax of configuration in the `Rakefile`
-
-### Enchancements
-
-- Add `default_index` option fixes #2
-- Option renaming and simplification by default value
-
-
