@@ -10,7 +10,6 @@ class ListTest < Minitest::Test
 
     assert_equal <<~OUT, stdout
       rake clear_backups    # Clear backups
-      rake install          # Install dotfiles for example
       rake install:example  # Install dotfiles for example
     OUT
   end

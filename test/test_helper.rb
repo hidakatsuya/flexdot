@@ -3,4 +3,3 @@
 require_relative '../lib/flexdot'
 require 'minitest/autorun'
 require 'pathname'
-require 'rr'

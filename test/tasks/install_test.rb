@@ -9,7 +9,7 @@ class InstallTest < Minitest::Test
     reset_test_dir
   end
 
-  def test_task_with_index_name
+  def test_task
     stdout = run_rake 'install:example'
 
     assert_equal <<~OUT, stdout
@@ -30,19 +30,6 @@ class InstallTest < Minitest::Test
       [already_linked] config/ddd/d.json
     OUT
     assert_home_links
-  end
-
-  def test_task_without_index_name
-    stdout = run_rake 'install'
-
-    assert_equal <<~OUT, stdout
-      [link_created] .arc
-      [link_created] b.conf (backup)
-      [link_updated] c.yml
-      [link_created] config/ddd/d.json
-    OUT
-    assert_home_links
-    assert_backup
   end
 
   private

@@ -47,14 +47,7 @@ Flexdot.setup(
   # (optional)
   # The dotfile directory path.
   # Default '.'.
-  dotfiles_dir: '.',
-
-  # (optional)
-  # The `rake install` command will be available to install the dotfile for the specified index file.
-  # Default nil.
-  #
-  # Note that the `rake install` command is always available if you have a single index file.
-  default_index: 'name_of_an_index_file'
+  dotfiles_dir: '.'
 )
 ```
 
@@ -124,8 +117,7 @@ $HOME/dotfiles
 require 'flexdot'
 
 Flexdot.setup(
-  home_dir: '..',
-  default_index: 'macOS'
+  home_dir: '..'
 )
 ```
 
@@ -212,10 +204,6 @@ ubuntu:
 ```
 
 ### Installing dotfiles
-
-    $ rake install
-
-Or
 
     $ rake install:macOS
 
