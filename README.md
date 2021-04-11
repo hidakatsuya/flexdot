@@ -51,6 +51,13 @@ Flexdot.setup(
 )
 ```
 
+It is recommended that you add the Rakefile to `gitignore`:
+
+```
+# .gitignore
+Rakefile
+```
+
 Finally, run `rake -T` in the `$HOME/dotfiles` and make sure that the output is as follows:
 
     $ rake -T
@@ -119,6 +126,10 @@ require 'flexdot'
 Flexdot.setup(
   home_dir: '..'
 )
+
+# You can execute `install:macOS` when you run `rake` command
+# with no arguments by defining it as follows:
+task default: 'install:macOS'
 ```
 
 ### Available Commands
@@ -127,7 +138,6 @@ When you run the `rake -T` command in that directory structure, you should have 
 
     $ rake -T
     rake clear_backups   # Clear all backups
-    rake install         # Install dotfiles for macOS
     rake install:macOS   # Install dotfiles for macOS
     rake install:ubuntu  # Install dotfiles for ubuntu
 
@@ -203,7 +213,11 @@ ubuntu:
     stop.sh: .xkeysnail
 ```
 
-### Installing dotfiles
+### Installing dotfiles for macOS
+
+    $ rake
+
+Or,
 
     $ rake install:macOS
 
