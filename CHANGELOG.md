@@ -1,3 +1,35 @@
+## 3.0.0
+
+### Breaking Changes
+
+Revert 'Add default_index option #2'. Please follow the instructions below to migrate:
+
+First, modify your Rakefile as follows:
+
+```diff
+require 'flexdot'
+
+Flexdot.setup(
++   home_dir: '..'
+-   home_dir: '..',
+-   default_index: 'macOS'
+)
+
++ task default: 'install:macOS'
+```
+
+Then, update flexdot:
+
+```
+$ bundle update flexdot
+```
+
+Now you can run the following command to install the default index dotfiles:
+
+```
+$ rake
+```
+
 ## 2.0.0
 
 ### Breaking Changes
