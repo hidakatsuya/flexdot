@@ -23,10 +23,4 @@ class ClearBackupsTest < Minitest::Test
 
     assert backup_dir.empty?
   end
-
-  private
-
-  def backup_dir
-    dotfiles / 'backup'
-  end
 end

@@ -7,6 +7,8 @@ module Flexdot
   class Backup
     BASE_DIR = 'backup'
 
+    class AlreadyFinishedError < StandardError; end
+
     class << self
       def clear_all
         base_dir.glob('*').each(&:rmtree)
@@ -19,10 +21,17 @@ module Flexdot
 
     def initialize
       backup_dir.mkpath unless backup_dir.exist?
+      @finished = false
     end
 
     def call(file)
+      raise AlreadyFinishedError if @finished
       FileUtils.mv(file, backup_dir)
+    end
+
+    def finish!
+      backup_dir.delete if backup_dir.empty?
+      @finished = true
     end
 
     private

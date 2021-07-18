@@ -15,6 +15,10 @@ module TestHelper
     home / 'dotfiles'
   end
 
+  def backup_dir
+    dotfiles / 'backup'
+  end
+
   def assert_link(home_file, to_dotfile:)
     assert_equal(
       dotfiles.join(to_dotfile),

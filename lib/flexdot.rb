@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rake'
+
 require_relative 'flexdot/version'
 require_relative 'flexdot/tasks'
 

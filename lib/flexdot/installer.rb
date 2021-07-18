@@ -21,6 +21,8 @@ module Flexdot
       index.each do |dotfile_path:, home_file_path:|
         install_link(dotfile_path, home_file_path)
       end
+
+      backup.finish!
     end
 
     private

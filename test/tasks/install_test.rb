@@ -21,6 +21,8 @@ class InstallTest < Minitest::Test
     assert_home_links
     assert_backup
 
+    sleep 1
+
     stdout = run_rake 'install:example'
 
     assert_equal <<~OUT, stdout
@@ -30,12 +32,13 @@ class InstallTest < Minitest::Test
       [already_linked] config/ddd/d.json
     OUT
     assert_home_links
+    # The backup should not increase
+    assert_backup
   end
 
   private
 
   def assert_backup
-    backup_dir = dotfiles / 'backup'
     backup = backup_dir.children.first
 
     assert_equal 1, backup_dir.children.size
