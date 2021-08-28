@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Flexdot
-  class Console
+  class Output
     Status = Struct.new(:home_file, :result, :backuped)
 
     def initialize(dotfiles_dir)
