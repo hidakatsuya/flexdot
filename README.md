@@ -48,6 +48,11 @@ Flexdot.setup(
   # The dotfile directory path.
   # Default '.'.
   dotfiles_dir: '.'
+
+  # (optional)
+  # Whether or not to colorize the output
+  # Default: true
+  output_colorize: true
 )
 ```
 
@@ -224,17 +229,17 @@ Or,
 The following is the output result:
 
 ```
-[already_linked] bin/git-delete-other-branches
-[already_linked] bin/git-reset-and-clean
-[already_linked] .config/git/ignore
-[already_linked] .gemrc
-[already_linked] .vimrc
-[link_created] .bash_profile (backup)
-[link_created] .bashrc (backup)
-[link_created] .gitconfig (backup)
-[link_created] .config/karabiner/assets/complex_modifications/tab-emulation.json (backup)
-[link_created] Library/Application Support/Code/User/keybindings.json (backup)
-[link_created] Library/Application Support/Code/User/settings.json (backup)
+already linked: bin/git-delete-other-branches
+already linked: bin/git-reset-and-clean
+already linked: .config/git/ignore
+already linked: .gemrc
+already linked: .vimrc
+link created: .bash_profile (backup)
+link created: .bashrc (backup)
+link created: .gitconfig (backup)
+link created: .config/karabiner/assets/complex_modifications/tab-emulation.json (backup)
+link created: Library/Application Support/Code/User/keybindings.json (backup)
+link created: Library/Application Support/Code/User/settings.json (backup)
 ```
 
 `already_linked` means skipped because `bin/git-delete-other-branches` is already linked. `link_created` means the link was created.

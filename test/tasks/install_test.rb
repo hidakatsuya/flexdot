@@ -13,10 +13,10 @@ class InstallTest < Minitest::Test
     stdout = run_rake 'install:example'
 
     assert_equal <<~OUT, stdout
-      [link_created] .arc
-      [link_created] b.conf (backup)
-      [link_updated] c.yml
-      [link_created] config/ddd/d.json
+      link created: .arc
+      link created: b.conf (backup)
+      link updated: c.yml
+      link created: config/ddd/d.json
     OUT
     assert_home_links
     assert_backup
@@ -26,10 +26,10 @@ class InstallTest < Minitest::Test
     stdout = run_rake 'install:example'
 
     assert_equal <<~OUT, stdout
-      [already_linked] .arc
-      [already_linked] b.conf
-      [already_linked] c.yml
-      [already_linked] config/ddd/d.json
+      already linked: .arc
+      already linked: b.conf
+      already linked: c.yml
+      already linked: config/ddd/d.json
     OUT
     assert_home_links
     # The backup should not increase

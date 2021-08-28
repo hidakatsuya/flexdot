@@ -10,9 +10,10 @@ module Flexdot
 
     Index = Struct.new(:filename, :name, keyword_init: true)
 
-    def initialize(dotfiles_dir, home_dir)
+    def initialize(dotfiles_dir, home_dir, output_colorize)
       @dotfiles_dir = Pathname.new(dotfiles_dir).expand_path
       @home_dir = Pathname.new(home_dir).expand_path
+      @output_colorize = output_colorize
     end
 
     def install
@@ -27,8 +28,9 @@ module Flexdot
           task index.name do
             installer = Installer.new(
               index.name,
-              dotfiles_dir: dotfiles_dir,
-              home_dir: home_dir
+              dotfiles_dir,
+              home_dir,
+              output_colorize
             )
             installer.install(index.filename)
           end
@@ -38,7 +40,7 @@ module Flexdot
 
     private
 
-    attr_reader :dotfiles_dir, :home_dir
+    attr_reader :dotfiles_dir, :home_dir, :output_colorize
 
     def indexes
       @indexes ||= Pathname.new(dotfiles_dir).glob('*.yml').map do |index_file|

@@ -8,12 +8,12 @@ require_relative 'index'
 
 module Flexdot
   class Installer
-    def initialize(name, dotfiles_dir:, home_dir:)
+    def initialize(name, dotfiles_dir, home_dir, output_colorize)
       @name = name
       @dotfiles_dir = dotfiles_dir
       @home_dir = home_dir
       @backup = Backup.new
-      @output = Output.new(@home_dir)
+      @output = Output.new(@home_dir, colorize: output_colorize)
     end
 
     def install(index_file)

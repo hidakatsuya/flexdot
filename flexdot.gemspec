@@ -18,4 +18,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'rake', '>= 12.0'
+  spec.add_dependency 'paint', '>= 2.2.1'
 end
