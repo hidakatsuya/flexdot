@@ -7,15 +7,16 @@ jobs:
   test:
     name: Test on ruby ${{ matrix.ruby_version }}
     runs-on: ubuntu-latest
+
     # Run this build only on either pull request or push.
     if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
 
     strategy:
       matrix:
         ruby_version:
-          - 2.6
           - 2.7
-          - 3.0
+          - '3.0'
+          - 3.1
     steps:
     - uses: actions/checkout@v2
 
