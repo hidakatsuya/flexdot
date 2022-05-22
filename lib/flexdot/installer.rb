@@ -8,11 +8,11 @@ require_relative 'index'
 
 module Flexdot
   class Installer
-    def initialize(name, dotfiles_dir, home_dir, output_colorize)
+    def initialize(name, dotfiles_dir, home_dir, output_colorize, keep_max_backup_count)
       @name = name
       @dotfiles_dir = dotfiles_dir
       @home_dir = home_dir
-      @backup = Backup.new
+      @backup = Backup.new(keep_max_backup_count)
       @output = Output.new(@home_dir, colorize: output_colorize)
     end
 
@@ -23,6 +23,7 @@ module Flexdot
       end
 
       backup.finish!
+      backup.remove_outdated!
     end
 
     private

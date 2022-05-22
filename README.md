@@ -53,6 +53,12 @@ Flexdot.setup(
   # Whether or not to colorize the output
   # Default: true
   output_colorize: true
+
+  # (optional)
+  # Whether to automatically delete old backups.
+  # If nil, do not delete, otherwise keep to the specified number of backups.
+  # Default: nil
+  keep_max_backup_count: 10
 )
 ```
 

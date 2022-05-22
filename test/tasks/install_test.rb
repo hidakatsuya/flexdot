@@ -7,6 +7,12 @@ class InstallTest < Minitest::Test
 
   def setup
     reset_test_dir
+
+    # prepare outdated backup directories
+    [
+      Time.local(2022, 1, 1, 0, 0, 0),
+      Time.local(2022, 1, 2, 0, 0, 0)
+    ].each { |t| backup_dir.join(t.strftime('%Y%m%d%H%M%S')).mkpath }
   end
 
   def test_task
@@ -39,9 +45,10 @@ class InstallTest < Minitest::Test
   private
 
   def assert_backup
-    backup = backup_dir.children.first
-
+    # keep one backup by seting keep_max_backup_setting
     assert_equal 1, backup_dir.children.size
+
+    backup = backup_dir.children.first
     assert_equal ['b.conf'], backup.children.map { |c| c.basename.to_s }
   end
 

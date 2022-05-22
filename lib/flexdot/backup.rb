@@ -19,8 +19,9 @@ module Flexdot
       end
     end
 
-    def initialize
+    def initialize(keep_max_count)
       backup_dir.mkpath unless backup_dir.exist?
+      @keep_max_count = keep_max_count
       @finished = false
     end
 
@@ -32,6 +33,16 @@ module Flexdot
     def finish!
       backup_dir.delete if backup_dir.empty?
       @finished = true
+    end
+
+    def remove_outdated!
+      return if @keep_max_count.nil?
+
+      backups = self.class.base_dir.glob('*/').select { |dir| dir.basename.to_s.match?(/\d{14}/) }
+      backups.sort_by! { |dir| dir.basename.to_s }.reverse!
+      backups.slice!(0, @keep_max_count)
+
+      backups.each(&:rmtree)
     end
 
     private
