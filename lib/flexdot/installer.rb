@@ -8,12 +8,12 @@ require_relative 'index'
 
 module Flexdot
   class Installer
-    def initialize(name, dotfiles_dir, home_dir, output_colorize, keep_max_backup_count)
+    def initialize(name, home_dir, dotfiles_dir, options)
       @name = name
       @dotfiles_dir = dotfiles_dir
       @home_dir = home_dir
-      @backup = Backup.new(keep_max_backup_count)
-      @output = Output.new(@home_dir, colorize: output_colorize)
+      @backup = Backup.new(options.keep_max_backup_count)
+      @output = Output.new(@home_dir, colorize: options.output_colorize)
     end
 
     def install(index_file)
@@ -28,7 +28,7 @@ module Flexdot
 
     private
 
-    attr_reader :name, :dotfiles_dir, :home_dir, :backup, :output
+    attr_reader :name, :home_dir, :dotfiles_dir, :backup, :output
 
     def install_link(dotfile_path, home_file_path)
       dotfile = @dotfiles_dir.join(dotfile_path).expand_path
