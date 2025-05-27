@@ -9,7 +9,7 @@ A Flexible and Rake based dotfile manager.
 
 ### Prerequisite
 
-Ruby 3.0+
+Ruby 3.2 or later
 
 ### Installing
 
