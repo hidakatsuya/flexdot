@@ -1,3 +1,6 @@
+> [!Note]
+> This project is no longer maintained. Please use the Go implementation, [flexdot-go](https://github.com/hidakatsuya/flexdot-go), instead.
+
 # Flexdot
 
 [![Gem Version](https://badge.fury.io/rb/flexdot.svg)](https://badge.fury.io/rb/flexdot)
